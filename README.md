@@ -1,12 +1,11 @@
-jmvc-component-table
+jmvc-component-search
 ====================
 
-A table component for JMVC 3.2.4.
+A search component for JMVC 3.2.4.
 
 ## API
 ### Parameters
-- headers (object literal)
-- rows (JMVC list)
-- template *optional* (string)
+- needle (string)
+- haystack (JMVC list OR endpoint)
 
-Both `headers` and `rows` arguments must be satisfied for the table to correctly render.
+Both `needle` and `haystack` arguments must be satisfied.

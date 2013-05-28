@@ -1,3 +1,3 @@
 steal(
-    './table.css'
+    './search.css'
 );

@@ -1,7 +1,7 @@
 steal("funcunit/qunit", function(){
-	module("table");
+	module("search");
 	
-	test("table testing works", function(){
+	test("search testing works", function(){
 		ok(true,"an assert is run");
 	});
 })

@@ -1,2 +1,2 @@
 steal("funcunit")
- .then("./table_test.js");
+ .then("./search_test.js");

@@ -1,3 +1,3 @@
-@page index table
+@page index search
 
 This is a placeholder for the homepage of your documentation.

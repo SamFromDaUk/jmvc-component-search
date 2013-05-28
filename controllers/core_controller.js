@@ -1,27 +1,20 @@
-Frog.Controller.extend('Frogui.Controllers.Components.Table', {
+Frog.Controller.extend('Frogui.Controllers.Components.Search', {
     /* @Static */
-    listensTo: ['table.enable', 'table.disable', 'table.destroy'],
+    listensTo: [],
 
 }, {
 
     init: function() {
-        if (this.options.headers && this.options.rows) {
-            if (!this.options.rows.match) {
-                throw new Error('Must provide JMVC list for `rows`.');
-            }
-
-            if (Frog.Utilities.toType(this.options.headers) !== 'object' || this.options.headers === null) {
-                throw new Error('Must provide object literal for `headers`.');
-            }
-            this.render();
-        } else {
-            throw new Error('Must provide object literal for `headers` AND JMVC list for `rows`.');
-        }
+        this.render();
     },
 
     render: function() {
-        this.options.template = this.options.template || '//frogui/components/table/views/core/table.ejs';
-        this.element.append(this.view(this.options.template, this.options));
+        this.options.template = this.options.template || '//frogui/components/search/views/core/search.ejs';
+        this.element.html(this.view(this.options.template, this.options));
+    },
+
+    "input[name=needle]": function() {
+        //this.trigger('')
     }
 
 });

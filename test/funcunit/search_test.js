@@ -1,7 +1,7 @@
 steal("funcunit", function(){
-	module("table test", { 
+	module("search test", { 
 		setup: function(){
-			S.open("//table/table.html");
+			S.open("//search/search.html");
 		}
 	});
 	
