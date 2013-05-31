@@ -6,6 +6,7 @@ Frog.Controller.extend('Frogui.Controllers.Components.Search', {
     search: null,
 
     init: function() {
+        this.model = new Frogui.Models.Components.Search.Data();
         this.render();
     },
 
@@ -17,17 +18,21 @@ Frog.Controller.extend('Frogui.Controllers.Components.Search', {
     },
 
     "input keyup": function(el, ev) {
-        var self = this,
-            value = el.val().replace(/^\s+|\s+$/, '');
+        var self = this;
+        this.model.attr('needle', el.val().replace(/^\s+|\s+$/, ''));
 
         //Get rid of any previous timeouts.
         window.clearTimeout(this.search);
 
-        if (value.length > this.minimum_char) {
+        if (this.model.attr('needle').length > this.minimum_char) {
             //Setup a delay of 1000ms so that a user can type without loading on every keyup
             this.search = setTimeout(function() {
-                self.element.trigger('search.find', value);
+                self.element.trigger('search.find', self.model.attr('needle'));
             }, 1000);
         }
+    },
+    "search.getNeedle": function(el, ev, callback) {
+        callback(this.model.attr('needle'));
     }
+
 });
