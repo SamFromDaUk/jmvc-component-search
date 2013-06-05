@@ -4,5 +4,10 @@ Frog.Model.extend('Frogui.Models.Components.Search.Data',
         needle: 'string'
     }
 }, {
-
+    setup: function() {
+        var defaults = {
+            'needle': ''
+        }
+        this._super(defaults);
+    }
 });
