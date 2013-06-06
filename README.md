@@ -5,7 +5,7 @@ A search component for JMVC 3.2.4.
 
 ## API
 ### Events emitted
-- 'search.find'
+- 'search.find' (On "keyup", or on the selection of a typeahead option if typeahead is used)
 - 'search.getNeedle'
 
 ## Overview
@@ -36,6 +36,14 @@ A search component which renders a text input and emits the data entered.
             searchTerm = needle;
         };
     $('#someElement').trigger('search.getNeedle', getNeedle);
+
+## Options
+- minimum_char (default 3)
+- search_delay (default 1000)
+- template (.ejs file to overwrite the default)
+- typeahead (Bootstrap Typeahead options)
+
+
 
 ## Additional Info
 This component needs tests!

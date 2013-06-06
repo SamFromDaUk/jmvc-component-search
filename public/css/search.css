@@ -1,8 +1,23 @@
-.frogui_components_actionmenu .dropdown-menu{right:-1px;top:30px;border-radius:6px 0px 6px 6px;-moz-border-radius:6px 0px 6px 6px;-webkit-border-radius:6px 0px 6px 6px;max-width:275px;text-align:left;}.frogui_components_actionmenu .dropdown-menu.hidden{display:none;}
-.frogui_components_actionmenu .dropdown-menu li{position:relative;}.frogui_components_actionmenu .dropdown-menu li a{white-space:nowrap;}.frogui_components_actionmenu .dropdown-menu li a .actionmenu-item-icon{float:none;margin:0;padding:0;width:18px!important;height:18px!important;display:inline-block;}
-.frogui_components_actionmenu .dropdown-menu li.actionmenu-item-disabled a{cursor:default;color:gray;-moz-opacity:.50;filter:alpha(opacity=50);opacity:.50;}.frogui_components_actionmenu .dropdown-menu li.actionmenu-item-disabled a:hover{text-decoration:none;background:transparent;}
-.frogui_components_actionmenu .dropdown-menu li.actionmenu-item-toggled .actionmenu-item-toggle{background:url("../../../../../public/icon/UI/icons.png") -190px -136px no-repeat;display:inline-block;width:7px!important;height:7px;margin-top:5px;margin-right:5px;float:right;}
-.frogui_components_actionmenu .dropdown-menu li.actionmenu-item-nohover:hover{cursor:default!important;background:none!important;color:inherit!important;}
-.frogui_components_actionmenu .app-icon-actions{background-image:url("../../../../../resources/public/css/images/actions.png");background-repeat:no-repeat;float:left;height:20px;width:20px;}
-.frogui_components_actionmenu .caret{margin-left:3px;}
-.frogui_components_actionmenu a.dropdown-toggle{display:inline-block;padding:4px 6px;}
+.frogui_components_search {
+  float: right;
+  margin-top: 5px;
+}
+.frogui_components_search form {
+  margin-bottom: 0;
+}
+.frogui_components_search form input {
+  margin-bottom: 0;
+}
+.frogui_components_search form button.search-btn {
+  position: static;
+  background: url("../../public/icon/zoom_icon&16.png") no-repeat scroll 0 47% transparent;
+  border: medium none !important;
+  cursor: pointer;
+  height: 34px;
+  margin-left: -26px;
+  padding: 0 !important;
+  width: 26px;
+}
+.frogui_components_search form button.search-btn-clear {
+  background: url("../../public/icon/delete_icon&16.png") no-repeat scroll 0 47% transparent;
+}
