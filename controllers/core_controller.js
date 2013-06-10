@@ -64,6 +64,7 @@ Frog.Controller.extend('Frogui.Controllers.Components.Search', {
     },
 
     'button.search-btn-clear {click}': function() {
+        window.clearTimeout(this.currentSearchTimeout);
         this.find('input').val('');
         this.element.trigger('search.query', '');
         this.hideClearBtn();
@@ -78,9 +79,9 @@ Frog.Controller.extend('Frogui.Controllers.Components.Search', {
     // Bootstrap catches the event and stops the propagation.
     "input keyup": function(el, ev) {
         if (this.getQuery()) {
-            this.hideClearBtn();
-        } else {
             this.showClearBtn();
+        } else {
+            this.hideClearBtn();
         }
         this.setSearchTimeout();
     },
