@@ -1,13 +1,20 @@
 Frog.Controller.extend('Frogui.Controllers.Components.Search', {
+    defaults: {
+        "placeholderText": "Search",
+        "minimumChar": 3,
+        "searchDelay": 600,
+        "template": '//frogui/components/search/views/core/search.ejs',
+        "typeahead": false
+    }
 
 }, {
     currentSearchTimeout: null,
+    el: null,
 
     init: function() {
-        this.options.placeholderText = this.options.placeholderText || 'Search';
-        this.options.minimumChar = this.options.minimumChar || 3;
-        this.options.searchDelay = this.options.searchDelay || 1000;
-        this.options.template = this.options.template || '//frogui/components/search/views/core/search.ejs';
+        this.currentSearchTimeout = null;
+        this.el = {};
+
 
         // Typeahead options error handling
         if (this.options.typeahead) {
@@ -15,16 +22,20 @@ Frog.Controller.extend('Frogui.Controllers.Components.Search', {
                 throw new Error('The "source" option for the typeahead must either be an Array or a function');
             }
         }
-
         this.render();
     },
 
     render: function() {
         this.element.html(this.view(this.options.template, this.options));
+
+        this.el.$input = this.find('input');
+        this.el.$searchBtn = this.find('button.search-btn');
+
         if (this.options.typeahead) {
             this.renderTypeahead();
         }
-        this.find('input').addIEplaceholders();
+
+        this.el.$input.addIEplaceholders();
     },
 
     renderTypeahead: function() {
@@ -38,8 +49,7 @@ Frog.Controller.extend('Frogui.Controllers.Components.Search', {
                 }
             }
         $.extend(typeaheadDefaults, this.options.typeahead);
-
-        this.find('input').typeahead(typeaheadDefaults);
+        this.el.$input.typeahead(typeaheadDefaults);
     },
 
     setSearchTimeout: function() {
@@ -56,16 +66,16 @@ Frog.Controller.extend('Frogui.Controllers.Components.Search', {
     },
 
     showClearBtn: function() {
-        this.find('button.search-btn').addClass('search-btn-clear');
+        this.el.$searchBtn.addClass('search-btn-clear');
     },
 
     hideClearBtn: function() {
-        this.find('button.search-btn').removeClass('search-btn-clear');
+        this.el.$searchBtn.removeClass('search-btn-clear');
     },
 
     'button.search-btn-clear {click}': function() {
         window.clearTimeout(this.currentSearchTimeout);
-        this.find('input').val('');
+        this.el.$input.val('');
         this.element.trigger('search.query', '');
         this.hideClearBtn();
     },
@@ -75,18 +85,16 @@ Frog.Controller.extend('Frogui.Controllers.Components.Search', {
         return false;
     },
 
-    // NOTE: This event will not trigger if typeahead is used.
-    // Bootstrap catches the event and stops the propagation.
     "input keyup": function(el, ev) {
+        this.setSearchTimeout();
         if (this.getQuery()) {
             this.showClearBtn();
         } else {
             this.hideClearBtn();
         }
-        this.setSearchTimeout();
     },
 
     getQuery: function() {
-        return this.find('input').val().replace(/^\s+|\s+$/, '');
+        return this.el.$input.val().replace(/^\s+|\s+$/, '');
     }
 });
